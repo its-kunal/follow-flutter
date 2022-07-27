@@ -1,15 +1,17 @@
 #include <SoftwareSerial.h>
+#include <cppQueue.h>
 
-#define ENA1 D0;
-#define IN1 D1;
-#define IN2 D2;
-#define ENA2 D3;
-#define IN3 D4;
-#define IN4 D5;
-#define BtTx D6;
-#define BtRx D7;
-#define timeDelay1 700;
-#define SamplingSice 3;
+
+#define ENA1 D0
+#define IN1 D1
+#define IN2 D2
+#define ENA2 D3
+#define IN3 D4
+#define IN4 D5
+#define BtTx D6
+#define BtRx D7
+#define timeDelay1 700
+#define SamplingSice 3
 
 SoftwareSerial btSerial(BtTx, BtRx);
 
@@ -78,7 +80,7 @@ void setup()
     pinMode(IN3, 1);
     pinMode(IN4, 1);
 
-    btSerial.begin(9600);
+    btSerial.begin(115200);
 }
 // Main Program Executes Here
 void loop()

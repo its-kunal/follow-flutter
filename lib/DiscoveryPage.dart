@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 class DiscoveryPage extends StatefulWidget {
   const DiscoveryPage({Key? key}) : super(key: key);
@@ -20,9 +21,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
           child: Padding(
               padding: EdgeInsets.only(left: 30, right: 30, top: 40),
               child: Column(
-                children: [
-                  
-                ],
+                children: [],
               ))),
     );
   }
