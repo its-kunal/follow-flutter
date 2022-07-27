@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import 'package:follow/DiscoveryPage.dart';
 import 'package:follow/joystickView.dart';
 
 void main() {
@@ -104,6 +105,14 @@ class _MyAppState extends State<MyApp> {
                       }),
                 ],
               ),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => DiscoveryPage()),
+                    );
+                  },
+                  child: Text('Open Devices')),
               Controls()
             ],
           ),
