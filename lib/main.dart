@@ -5,7 +5,10 @@ import 'package:follow/DiscoveryPage.dart';
 import 'package:follow/joystickView.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
@@ -68,76 +71,56 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Follow Trolley'),
-          backgroundColor: Colors.green,
-        ),
-        body: Center(
-            child: Padding(
-          padding: const EdgeInsets.only(top: 60, left: 30, right: 30),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Bluetooth',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  Switch(
-                      value: _bluetoothState.isEnabled,
-                      onChanged: (bool newVal) {
-                        future() async {
-                          if (newVal)
-                            await FlutterBluetoothSerial.instance
-                                .requestEnable();
-                          else
-                            await FlutterBluetoothSerial.instance
-                                .requestDisable();
-                        }
-
-                        future().then((_) {
-                          setState(() {});
-                        });
-                      }),
-                ],
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => DiscoveryPage()),
-                    );
-                  },
-                  child: Text('Open Devices')),
-              Controls()
-            ],
-          ),
-        )),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Follow Trolley'),
+        backgroundColor: Colors.green,
       ),
+      body: Center(
+          child: Padding(
+        padding: const EdgeInsets.only(top: 60, left: 30, right: 30),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Bluetooth',
+                  style: TextStyle(fontSize: 18),
+                ),
+                Switch(
+                    value: _bluetoothState.isEnabled,
+                    onChanged: (bool newVal) {
+                      future() async {
+                        if (newVal)
+                          await FlutterBluetoothSerial.instance.requestEnable();
+                        else
+                          await FlutterBluetoothSerial.instance
+                              .requestDisable();
+                      }
+
+                      future().then((_) {
+                        setState(() {});
+                      });
+                    }),
+              ],
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DiscoveryPage()),
+                  );
+                },
+                child: Text('Open Devices')),
+            Controls()
+          ],
+        ),
+      )),
     );
   }
 }
 
-class Discovery extends StatefulWidget {
-  const Discovery({Key? key}) : super(key: key);
-
-  @override
-  State<Discovery> createState() => _DiscoveryState();
-}
-
-class _DiscoveryState extends State<Discovery> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [Text('Connected Devices:')],
-    );
-  }
-}
 
 class Controls extends StatefulWidget {
   const Controls({Key? key}) : super(key: key);
