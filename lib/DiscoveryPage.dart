@@ -86,12 +86,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
               : IconButton(
                   icon: Icon(Icons.replay),
                   onPressed: _restartDiscovery,
-                ),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text("Go Back"))
+                )
         ],
       ),
       body: ListView.builder(
