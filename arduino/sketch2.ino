@@ -1,5 +1,4 @@
 #include <SoftwareSerial.h>
-#include <cppQueue.h>
 
 // motor1 right motor
 // motor2 left motor
@@ -12,12 +11,10 @@
 #define IN4 D5
 #define BtTx D6
 #define BtRx D7
-#define timeDelay1 700
+#define timeDelay1 1500
 #define SamplingSice 3
 
 SoftwareSerial btSerial(BtTx, BtRx);
-cppQueue q(10, )
-
 
 void stopWheels() // s
 {
@@ -108,20 +105,5 @@ void loop()
         default:
             break;
         }
-    }
-}
-
-// async function to control nodemcu
-void myRul(int d)
-{
-    myTime = millis();
-    int prevTime = 0;
-    if (myTime - prevTime > d)
-    {
-
-    }
-    else
-    {
-        prevTime = myTime;
     }
 }
